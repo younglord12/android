@@ -48,3 +48,21 @@ fun mic() { //second task
     println("Количество нечетных чисел: $second")
 }
 
+fun maGNUS() { //third task
+    val intArray = intArrayOf(1, 2, 3, 4, 5)
+    var start = 0
+    var end = intArray.size - 1
+    var prikol = 0
+    for (i in intArray.indices) {
+        if(start < end) {
+            prikol = intArray[start]
+            intArray[start] = intArray[end]
+            intArray[end] = prikol
+            start++
+            end--
+        }
+
+    }
+
+    println(intArray.joinToString())
+}
