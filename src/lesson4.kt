@@ -25,3 +25,26 @@ fun main() { //first task
     println("Получилось минимальное число: $min")
     println("Позиция максимального числа: $minIndex")
 }
+
+
+fun mic() { //second task
+    val intArray = intArrayOf(1, 2, 3, 4, 5)
+    var first = 0
+    var second = 0
+    for (i in intArray) {
+        if (i % 2 == 0) {
+            first ++
+        }
+    }
+
+
+    for (i in intArray) {
+        if (i % 2 != 0) {
+            second ++
+        }
+    }
+
+    println("Количество четных чисел: $first")
+    println("Количество нечетных чисел: $second")
+}
+
