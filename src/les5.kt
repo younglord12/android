@@ -1,5 +1,5 @@
-fun mainr() {
-    val str: String = "happy ovechkin neymar"
+fun main() {
+    val str: String = "happy ov cucumber"
     val builder = StringBuilder()
     builder.append(str)
     println(builder.toString())
