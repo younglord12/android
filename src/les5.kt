@@ -1,4 +1,4 @@
-fun main() {
+fun mainr() {
     val str: String = "happy ovechkin neymar"
     val builder = StringBuilder()
     builder.append(str)
