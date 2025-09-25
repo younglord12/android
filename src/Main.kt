@@ -1,8 +1,28 @@
+import lesson8.Clothing
+import lesson8.Electronics
+import lesson8.Food
+import lesson8.Product
 import kotlin.system.exitProcess
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() { //task 1
+fun main (){
+    val products = listOf<Product>(
+        Electronics(300.1),
+        Food(70.4),
+        Clothing(210.3)
+    )
+    products.forEach {
+        println("Финальная цена товара: ${it.getFinalPrice()}")
+
+
+    }
+}
+
+
+
+
+/*fun main() { //task 1
     println("Введите число: ")
     val a = readln().toInt()
     val str = a.toString()
@@ -65,3 +85,5 @@ fun milk(){//task 2
         println("$a - не простое число")
     }
 }
+
+ */
