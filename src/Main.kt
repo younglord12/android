@@ -1,8 +1,59 @@
+import java.util.InputMismatchException
 import kotlin.system.exitProcess
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() { //task 1
+
+fun maine () { //les10task1
+    try {
+    println("Введите первое число: ")
+    val num1 = readln().toInt()
+    println("Введите второе число: ")
+    val num2 = readln().toInt()
+
+        val result = num1/num2
+        println(result)
+    } catch (ex: ArithmeticException){
+        println("Деление на 0 запрещено")
+    } catch (ex: NumberFormatException) {
+        println("Введено не число")
+    }
+}
+
+
+fun mainee () { //les10task2
+    try {
+        println("Введите возраст: ")
+        val age = readln().toInt()
+        if (age < 18) {
+            throw TooYoungException()
+        } else {
+            println("Корректный возраст: $age")
+        }
+    } catch (e: TooYoungException) {
+        println("Ошибка: ${e.message}")
+    }
+}
+class TooYoungException() : Exception ("Возраст должен быть не меньше 18 лет.") {
+
+}
+
+fun main () { //les10task3
+    try {
+    println("Введите строку: ")
+    val line = readln().toString()
+        if (line.isBlank()) {
+            throw IllegalArgumentException("Пустая строка")
+        } else {
+            println(line)
+        }
+    } catch (ex:  IllegalArgumentException) {
+        println("Введена пустая строка")
+    }
+}
+
+
+
+
+/*fun main() { //task 1
     println("Введите число: ")
     val a = readln().toInt()
     val str = a.toString()
@@ -19,7 +70,7 @@ fun main() { //task 1
 
 
 
-fun main() { //task4
+fun maine() { //task4
     println("Введите высоты лесенки: ")
     val n = readln().toInt()
 
@@ -65,3 +116,5 @@ fun milk(){//task 2
         println("$a - не простое число")
     }
 }
+
+ */
