@@ -2,7 +2,7 @@ import java.util.InputMismatchException
 import kotlin.system.exitProcess
 
 
-fun main () { //les10task1
+fun maine () { //les10task1
     try {
     println("Введите первое число: ")
     val num1 = readln().toInt()
@@ -17,6 +17,25 @@ fun main () { //les10task1
         println("Введено не число")
     }
 }
+
+
+fun main () { //les10task2
+    try {
+        println("Введите возраст: ")
+        val age = readln().toInt()
+        if (age < 18) {
+            throw TooYoungException()
+        } else {
+            println("Корректный возраст: $age")
+        }
+    } catch (e: TooYoungException) {
+        println("Ошибка: ${e.message}")
+    }
+}
+class TooYoungException() : Exception ("Возраст должен быть не меньше 18 лет.") {
+
+}
+
 
 
 
