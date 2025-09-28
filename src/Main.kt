@@ -19,7 +19,7 @@ fun maine () { //les10task1
 }
 
 
-fun main () { //les10task2
+fun mainee () { //les10task2
     try {
         println("Введите возраст: ")
         val age = readln().toInt()
@@ -34,6 +34,20 @@ fun main () { //les10task2
 }
 class TooYoungException() : Exception ("Возраст должен быть не меньше 18 лет.") {
 
+}
+
+fun main () { //les10task3
+    try {
+    println("Введите строку: ")
+    val line = readln().toString()
+        if (line.isBlank()) {
+            throw IllegalArgumentException("Пустая строка")
+        } else {
+            println(line)
+        }
+    } catch (ex:  IllegalArgumentException) {
+        println("Введена пустая строка")
+    }
 }
 
 
