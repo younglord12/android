@@ -2,7 +2,25 @@ import kotlin.system.exitProcess
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() { //task 1
+import lesson7.Book
+import lesson7.BookData
+import lesson7.Genre
+import lesson7.Borrowable
+
+fun main() {
+    val book1 = BookData("Роулинг", "Гарри Поттер", "2001", "001", Genre.FANTASY)
+    val book2 = BookData("Кристи", "Убийство в восточном экспрессе", "1950", "002", Genre.DETECTIVE)
+
+
+
+    println(book1)
+    println(book1 == book2) // сравнение по всем полям
+    println(book1.isSameBook(book2)) // сравнение по author и title
+
+    book1.borrow("Иван")
+}
+
+/*fun mainin() { //task 1
     println("Введите число: ")
     val a = readln().toInt()
     val str = a.toString()
@@ -19,7 +37,7 @@ fun main() { //task 1
 
 
 
-fun main() { //task4
+fun maine() { //task4
     println("Введите высоты лесенки: ")
     val n = readln().toInt()
 
@@ -65,3 +83,4 @@ fun milk(){//task 2
         println("$a - не простое число")
     }
 }
+ */
