@@ -1,4 +1,4 @@
-fun main() { //first task
+/*fun main() { //first task
     val intArray = intArrayOf(1, 2, 3, 4, 5)
     var max = intArray[0]
     var maxIndex = 0
@@ -66,3 +66,5 @@ fun maGNUS() { //third task
 
     println(intArray.joinToString())
 }
+
+ */

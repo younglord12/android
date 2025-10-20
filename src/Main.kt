@@ -1,8 +1,99 @@
 import kotlin.system.exitProcess
+import java.util.concurrent.atomic.AtomicInteger
+import kotlin.concurrent.thread
+import java.util.concurrent.locks.ReentrantLock
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() { //task 1
+
+//task2
+fun main() {
+    val counter = AtomicInteger(0)
+
+    val incrementTask = {
+        repeat(1000) {
+            counter.incrementAndGet()
+        }
+    }
+
+    val thread1 = thread(start = true) { incrementTask() }
+    val thread2 = thread(start = true) { incrementTask() }
+
+    thread1.join()
+    thread2.join()
+
+    println("Итоговое значение счетчика: ${counter.get()}")
+}
+
+//task3
+
+class Counter(private val lock: ReentrantLock) {
+    var count = 0
+        private set
+
+    fun increment() {
+        lock.lock()
+        try {
+            count++
+        } finally {
+            lock.unlock()
+        }
+    }
+
+    fun decrement() {
+        lock.lock()
+        try {
+            count--
+        } finally {
+            lock.unlock()
+        }
+    }
+}
+
+fun maine() {
+    val lock = ReentrantLock()
+    val counter = Counter(lock)
+
+    val incrementThread = thread {
+        repeat(1000) {
+            counter.increment()
+        }
+    }
+
+    val decrementThread = thread {
+        repeat(1000) {
+            counter.decrement()
+        }
+    }
+
+    incrementThread.join()
+    decrementThread.join()
+
+    println("Итоговое значение счетчика: ${counter.count}")
+}
+
+
+//task 1 main
+fun mainr() {
+    val lock = ReentrantLock() // внешний объект синхронизации
+    val counter = Counter(lock)
+
+    val incrementThread = thread {
+        repeat(1000) {
+            counter.increment()
+        }
+    }
+
+    val decrementThread = thread {
+        repeat(1000) {
+            counter.decrement()
+        }
+    }
+
+    incrementThread.join()
+    decrementThread.join()
+
+    println("Итоговое значение count: ${counter.count}")
+}
+/*fun main() { //task 1
     println("Введите число: ")
     val a = readln().toInt()
     val str = a.toString()
@@ -65,3 +156,5 @@ fun milk(){//task 2
         println("$a - не простое число")
     }
 }
+
+ */
