@@ -1,67 +1,33 @@
-import kotlin.system.exitProcess
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() { //task 1
-    println("Введите число: ")
-    val a = readln().toInt()
-    val str = a.toString()
-    var Pal = true
-
-    for(i in 0 until str.length / 2) {
-        if (str[i] != str[str.length - 1 - i]){
-            Pal = false
-            break
-        }
-    }
-    println("Число палиндром: $Pal")
+//task 1
+fun groupAnagrams(words: List<String>): List<List<String>> {
+    return words.groupBy { it.toCharArray().sorted().joinToString("") }
+        .values
+        .toList()
 }
 
+fun main() {
+    val words = listOf("listen", "silent", "enlist", "java", "avaj", "world")
+    val grouped = groupAnagrams(words)
 
-
-fun main() { //task4
-    println("Введите высоты лесенки: ")
-    val n = readln().toInt()
-
-    for(i in n downTo 1) {
-        println("#".repeat(i))
+    println("Группы анаграмм:")
+    for (group in grouped) {
+        println(group)
     }
 }
 
-
-fun man() { //task3
-    println("Введите число: ")
-    var result = readln().toInt()
-
-    while (result >= 10) {
-        var sum = 0
-        for (digitChar in result.toString()) {
-            val digit = digitChar.toString().toInt()
-            sum += digit
+//task 2
+fun findFirstDuplicate(numbers: List<Int>): Int? {
+    val seen = mutableSetOf<Int>()
+    for (num in numbers) {
+        if (!seen.add(num)) {
+            return num // Уже было — значит, это первое повторение
         }
-        println("Сложение цифр: $sum")
-        result = sum
     }
-    println("Получилось число: $result")
+    return null // Нет повторений
 }
 
-fun milk(){//task 2
-    println("Введите число: ")
-    val a = readln().toInt()
-    var health = true
-
-    if(a < 2) {
-        health = false
-    } else {
-        for (i in 2 until a) {
-            if(a % i == 0) {
-                break
-            }
-        }
-    }
-    if (health) {
-        println("$a - простое число")
-    } else {
-        println("$a - не простое число")
-    }
+fun maine() {
+    val numbers = listOf(3, 5, 1, 4, 5, 2, 3)
+    val duplicate = findFirstDuplicate(numbers)
+    println("Первое повторяющееся число: $duplicate")
 }
