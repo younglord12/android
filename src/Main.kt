@@ -1,67 +1,62 @@
-import kotlin.system.exitProcess
+import java.util.LinkedList
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() { //task 1
-    println("Введите число: ")
-    val a = readln().toInt()
-    val str = a.toString()
-    var Pal = true
+//task2
+fun mergeSortedLists(list1: LinkedList<Int>, list2: LinkedList<Int>): LinkedList<Int> {
+    val merged = LinkedList<Int>()
+    var i = 0
+    var j = 0
 
-    for(i in 0 until str.length / 2) {
-        if (str[i] != str[str.length - 1 - i]){
-            Pal = false
-            break
+    while (i < list1.size && j < list2.size) {
+        if (list1[i] <= list2[j]) {
+            merged.add(list1[i])
+            i++
+        } else {
+            merged.add(list2[j])
+            j++
         }
     }
-    println("Число палиндром: $Pal")
+
+    // Добавляем оставшиеся элементы
+    while (i < list1.size) {
+        merged.add(list1[i])
+        i++
+    }
+
+    while (j < list2.size) {
+        merged.add(list2[j])
+        j++
+    }
+
+    return merged
+}
+
+//task1
+fun main() {
+    val list1 = LinkedList(listOf(1, 3, 5, 7))
+    val list2 = LinkedList(listOf(2, 4, 6, 8))
+
+    val result = mergeSortedLists(list1, list2)
+    println("Слитый список: $result")
 }
 
 
-
-fun main() { //task4
-    println("Введите высоты лесенки: ")
-    val n = readln().toInt()
-
-    for(i in n downTo 1) {
-        println("#".repeat(i))
+fun findSurvivor(n: Int): Int {
+    val people = LinkedList<Int>()
+    for (i in 1..n) {
+        people.add(i)
     }
+
+    var index = 0
+    while (people.size > 1) {
+        index = (index + 1) % people.size
+        people.removeAt(index)
+    }
+
+    return people.first
 }
 
-
-fun man() { //task3
-    println("Введите число: ")
-    var result = readln().toInt()
-
-    while (result >= 10) {
-        var sum = 0
-        for (digitChar in result.toString()) {
-            val digit = digitChar.toString().toInt()
-            sum += digit
-        }
-        println("Сложение цифр: $sum")
-        result = sum
-    }
-    println("Получилось число: $result")
-}
-
-fun milk(){//task 2
-    println("Введите число: ")
-    val a = readln().toInt()
-    var health = true
-
-    if(a < 2) {
-        health = false
-    } else {
-        for (i in 2 until a) {
-            if(a % i == 0) {
-                break
-            }
-        }
-    }
-    if (health) {
-        println("$a - простое число")
-    } else {
-        println("$a - не простое число")
-    }
+fun maine() {
+    val n = 5
+    val survivor = findSurvivor(n)
+    println("Победитель: $survivor")
 }
